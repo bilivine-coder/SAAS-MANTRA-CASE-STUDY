@@ -1,0 +1,439 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --sage: #7c987c;
+    --forest: #365236;
+    --sage-light: #eaf0ea;
+    --sage-mid: #c2d4c2;
+    --cream: #f7f5f0;
+    --ink: #1a1f1a;
+    --muted: #5a6b5a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .cs-page {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    padding: 0;
+    width: 100%;
+  }
+
+  .cs-header {
+    background: var(--forest);
+    padding: 36px 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cs-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(124,152,124,0.18);
+  }
+
+  .cs-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 120px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .cs-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sage-mid);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .cs-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    max-width: 560px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cs-title span {
+    color: var(--sage-mid);
+  }
+
+  .cs-body {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 0;
+  }
+
+  .cs-main {
+    padding: 32px 36px 32px 40px;
+    border-right: 1px solid var(--sage-mid);
+  }
+
+  .cs-sidebar {
+    padding: 28px 24px;
+    background: var(--forest);
+  }
+
+  .section {
+    margin-bottom: 26px;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--sage);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sage-mid);
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .body-text {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: #3a463a;
+  }
+
+  .bullet-list {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  .bullet-list li {
+    font-size: 12px;
+    line-height: 1.65;
+    color: #3a463a;
+    padding: 4px 0 4px 16px;
+    position: relative;
+    border-left: 2px solid var(--sage-mid);
+    padding-left: 12px;
+    margin-bottom: 6px;
+  }
+
+  .bullet-list li strong {
+    color: var(--forest);
+    font-weight: 500;
+  }
+
+  .chart-section {
+    background: white;
+    border: 1px solid var(--sage-mid);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 18px 0;
+    text-align: center;
+  }
+
+  .chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 32px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .bar {
+    width: 52px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+  }
+
+  .bar-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .bar-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  .chart-caption {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .quote-block {
+    background: var(--sage-light);
+    border-left: 3px solid var(--sage);
+    padding: 14px 16px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0;
+  }
+
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 12.5px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .quote-attr {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .cta-block {
+    background: var(--forest);
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .cta-text {
+    font-size: 12px;
+    color: var(--sage-mid);
+    line-height: 1.5;
+    max-width: 300px;
+  }
+
+  .cta-btn {
+    background: var(--sage);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sage-mid);
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(124,152,124,0.3);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .stat-label {
+    font-size: 9.5px;
+    color: var(--sage-mid);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-sub {
+    font-size: 10px;
+    color: rgba(194,212,194,0.8);
+    line-height: 1.4;
+  }
+
+  .sidebar-meta {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(124,152,124,0.25);
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 8px;
+  }
+
+  .meta-key {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--sage-mid);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .meta-val {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.85);
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+</style>
+
+<div class="cs-page">
+
+  <div class="cs-header">
+    <div class="cs-eyebrow">Case Study — Automation ROI</div>
+    <div class="cs-title">How SaaS Mantra Fixed the <span>"College Application"</span> Onboarding & Unlocked $48k in Monthly Profit</div>
+  </div>
+
+  <div class="cs-body">
+    <div class="cs-main">
+
+      <div class="section">
+        <div class="section-label">The Challenge</div>
+        <div class="section-heading">The $3M Revenue Problem</div>
+        <div class="body-text">
+          SaaS Mantra had an impressive top line — bringing in $2.8M–$3.8M annually — but the bottom line was broken. Monthly profit fluctuated dangerously between $40k and $280k for that volume. The culprit was the onboarding form. It read like a college application. Long, confusing, and manual. 40–50% of new users dropped off before ever seeing the product dashboard — creating a cascade of low feature usage, a flood of support tickets, and hundreds of refund requests each year.
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">The Solution</div>
+        <div class="section-heading">From Manual Friction to Auto-Generated Flow</div>
+        <ul class="bullet-list">
+          <li><strong>Onboarding Overhaul:</strong> Replaced the long-form application with a smart, progressive intake that auto-saves progress.</li>
+          <li><strong>Automation Stack:</strong> Connected workflow for Auto-Generate Assets + Auto-Sync Data + Auto-Book Calls. If a user triggered "Need Help," the system booked the call — no human needed.</li>
+          <li><strong>Smart Email Triage:</strong> Automated customer needs triage resolved common questions instantly, freeing the support team for real issues.</li>
+        </ul>
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-bars">
+          <div class="bar-group">
+            <div class="bar-val">$2.5k</div>
+            <div class="bar" style="height: 14px; background: var(--sage-mid);"></div>
+            <div class="bar-label">Month 1</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-val">$48k</div>
+            <div class="bar" style="height: 96px; background: var(--forest);"></div>
+            <div class="bar-label">Month 3</div>
+          </div>
+        </div>
+        <div class="chart-caption">Monthly Profit Recovery Post-Automation Deployment</div>
+      </div>
+
+      <div class="bottom-row">
+        <div>
+          <div class="section-label">The Result</div>
+          <ul class="bullet-list">
+            <li><strong>Profit locked in</strong> at $48,000/month from existing revenue.</li>
+            <li><strong>Drop-off flipped</strong> from majority dropout to majority activation.</li>
+            <li><strong>Support volume reduced</strong> — more time on product expansion.</li>
+          </ul>
+          <div class="quote-block" style="margin-top: 14px;">
+            <div class="quote-text">"We were losing hundreds of customers to a stupid form. We had no idea we were leaving $48k on the table every month until the automation showed us the math."</div>
+            <div class="quote-attr">— Founder @ SaaS Mantra</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Take Action</div>
+          <div class="cta-block" style="flex-direction: column; align-items: flex-start; gap: 14px;">
+            <div class="cta-text">Is your onboarding form costing you 40% of your customers? Let's find out exactly where you're leaking revenue.</div>
+            <div class="cta-btn">Get the Automation Audit →</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cs-sidebar">
+      <div class="sidebar-eyebrow">At a Glance</div>
+
+      <div class="stat-card">
+        <div class="stat-label">Monthly Profit</div>
+        <div class="stat-val">$48,000</div>
+        <div class="stat-sub">Up from ~$2,500 at start</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Onboarding Drop-Off</div>
+        <div class="stat-val">&lt;10%</div>
+        <div class="stat-sub">Down from 45%</div>
+      </div>
+
+      <div class="sidebar-meta">
+        <div class="meta-row">
+          <div class="meta-key">Client</div>
+          <div class="meta-val">SaaS Mantra</div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-key">Industry</div>
+          <div class="meta-val">B2B SaaS Platform</div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-key">Timeline</div>
+          <div class="meta-val">3 Months to Full Impact</div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-key">Method</div>
+          <div class="meta-val">n8n Automation Stack</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
